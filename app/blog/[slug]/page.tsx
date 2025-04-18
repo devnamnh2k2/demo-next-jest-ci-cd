@@ -22,3 +22,11 @@ export default async function Page({ params }: Props) {
     </>
   );
 }
+
+export async function generateStaticParams() {
+  return [
+    { slug: 'hello-world' },
+    { slug: 'nextjs-tutorial' },
+    { slug: 'my-first-post' },
+  ];
+}
