@@ -1,24 +1,22 @@
-
-type MetadataParams = {
-  params: {
-    slug: string;
-  };
-};
-
-type PageProps = {
-  params: {
-    slug: string;
-  };
-};
-
-export async function generateMetadata({ params }: MetadataParams) {
-  return { title: `Post: ${params.slug}` };
+import type { Metadata } from 'next';
+type Props = {
+  params: Promise<{ slug: string }>
 }
 
-export default function Page({ params }: PageProps) {
+
+export async function generateMetadata(
+  { params }: Props): Promise<Metadata> {
+  const { slug } = await params
+  return { title: `Post: ${slug}` };
+}
+ 
+
+
+export default async function Page({ params }: Props) {
+  const { slug } = await params
   return (
     <>
-      <h1>Slug: {params.slug}</h1>
+      <h1>Slug: {slug}</h1>
       <p>NamNH</p>
       <p>bla bla bla</p>
     </>
