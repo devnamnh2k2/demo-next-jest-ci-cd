@@ -1,10 +1,17 @@
+
+type MetadataParams = {
+  params: {
+    slug: string;
+  };
+};
+
 type PageProps = {
   params: {
     slug: string;
   };
 };
 
-export async function generateMetadata({ params }: PageProps) {
+export async function generateMetadata({ params }: MetadataParams) {
   return { title: `Post: ${params.slug}` };
 }
 
